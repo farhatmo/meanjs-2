@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { SessionActions } from '../../core/actions';
 import { select } from '@angular-redux/store';
@@ -9,19 +10,21 @@ import {NgReduxRouter} from '@angular-redux/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-    credentials: any = {};
     returnUrl: string;
     @select(['session', 'isLoading']) isLoading$: Observable<boolean>;
     @select(s => !!s.session.token) loggedIn$: Observable<boolean>;
+    form: FormGroup;
 
     constructor(
         private route: ActivatedRoute,
         private ngReduxRouter: NgReduxRouter,
         private router: Router,
-            private actions: SessionActions) { }
+        private actions: SessionActions) { 
+            this.form = this._buildForm();
+        }
 
     ngOnInit() {
         // reset login status
@@ -40,12 +43,20 @@ export class LoginComponent implements OnInit {
                 });
     }
 
-    login() {
-        console.log('this.credentials:',this.credentials);
 
-        this.actions.loginUser({usernameOrEmail: this.credentials.usernameOrEmail, password: this.credentials.password})
 
+    login(formCredentials) {
+      this.actions.loginUser(formCredentials);
     }
+
+  private _buildForm() {
+    return new FormGroup({
+      usernameOrEmail: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required)
+    });
+  }
+
+
 
 }
 

@@ -39,6 +39,7 @@ export function sessionReducer(
     });
 
   case SessionActions.LOGOUT_USER:
+    console.log(INITIAL_STATE);
     return INITIAL_STATE;
 
   default:

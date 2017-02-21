@@ -1,11 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 // MATERIAL DESIGN MODULES
-import { MaterialModule } from '@angular/material';
+import { MaterialModule, OverlayContainer } from '@angular/material';
 import 'hammerjs';
+
+// FONT AWESOME
+import { Angular2FontAwesomeModule } from 'angular2-font-awesome/angular2-font-awesome';
+
 
 //  REDUX
 import { NgReduxModule, DevToolsExtension } from '@angular-redux/store';
@@ -36,17 +40,21 @@ import { HomeComponent } from './home/home.component';
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     FormsModule,
     HttpModule,
     NgReduxModule,
     NgReduxRouterModule,
     APP_ROUTES,
+    Angular2FontAwesomeModule,
     MaterialModule.forRoot()
   ],
   providers: [
+    OverlayContainer,
     AuthInterceptor,
     SessionActions,
     SessionEpics,
+    
     UsersService
   ],
   bootstrap: [AppComponent]

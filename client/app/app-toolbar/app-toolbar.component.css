@@ -1,16 +1,16 @@
 md-toolbar.extend-toolbar {
-  background-color: #0168AB;
+  background-color: black;
   background-repeat: no-repeat;
   background-position: right;
   top: 0px;
-  box-shadow: 0 2px 5px 0 rgba(0,0,0,.26);
+  box-shadow: 2px 0 3px rgba(0, 0, 0, 0.5);
   width: 100%;
+  padding: 0 32px 0 20px;
   max-height: 32px !important;
-  z-index: 1;
   color: white;
 }
 md-toolbar .md-toolbar-layout md-toolbar-row {
-  height: 35px !important;
+  height: 2Opx !important;
   background: grey !important;
 }
 
@@ -22,7 +22,6 @@ md-toolbar .flex {
 md-toolbar a {
   color: inherit;
   text-decoration: none;
-  height: 100%;
   margin: 0px 10px 0px 10px;
   border-bottom: 2px solid transparent;
   font-size: 1.1em;
@@ -32,8 +31,9 @@ md-toolbar a {
 
 
 md-toolbar a img {
-  height: 10%;
-  margin-left: -25px;
+  float: left;
+  width: 45px;
+  height: 45px;
 }
 
 md-toolbar-row button {
@@ -48,4 +48,12 @@ md-toolbar-row:nth-child(2) {
   text-align: center;
   height: 56px;
   margin-top: 56px;
+}
+
+.login:hover{
+  color: green;
+}
+
+.logout:hover{
+  color: red;
 }

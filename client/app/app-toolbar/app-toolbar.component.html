@@ -10,6 +10,15 @@
 
   <!-- This fills the remaining space of the current row -->
   <span class="example-fill-remaining-space" style="flex: 1 1 auto;"></span>
-  <md-icon>verified_user</md-icon>
-  
+  <div  mdTooltip="Sign out">  
+    <a *ngIf="loggedIn$ | async" [routerLink]="['login']">
+      <fa class="login" name="sign-in" #login size="1x"></fa>
+    </a>
+  </div>
+  <div mdTooltip="Sign out">  
+  <a *ngIf="loggedOut$ | async" (click)="logout()">
+    <fa class="logout" name="sign-out" #login size="1x"></fa>
+  </a>
+  </div>
+
 </md-toolbar>

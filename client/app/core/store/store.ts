@@ -14,7 +14,7 @@ export const rootReducer = combineReducers<IAppState>({
 
 export function deimmutify(store) {
   return {
-    session: store.session.toJS(),
+    session: store.session,
     router: store.router,
   };
 }

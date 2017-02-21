@@ -21,7 +21,7 @@ export class SessionActions {
   };
 
   logoutUser() {
-    this.ngRedux.dispatch({ type: SessionActions.LOGOUT_USER });
+    return this.ngRedux.dispatch({ type: SessionActions.LOGOUT_USER });
   };
 }
 
